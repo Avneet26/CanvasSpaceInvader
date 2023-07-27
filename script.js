@@ -47,7 +47,7 @@ const init = function (){
   });
   playHard.addEventListener('click', function(){
     playInit();
-    baseSpeed = 6;
+    baseSpeed = 4;
     playBtn.style.display = 'none';
     playHard.style.display = 'none';
   });
@@ -77,7 +77,7 @@ const bulletAnim = function() {
   }
 }
 
-let baseSpeed = 0;
+let baseSpeed = 2;
 
 function enemSpeedCalc(rad) {
   return randomNumber(baseSpeed, 4 + baseSpeed);
