@@ -100,5 +100,19 @@ const Particles = function(x, y, radius, color, dx, dy, grav = 0.2) {
   }
 }
 
-const gameObj = {Player, Enemy, Bullet, Particles};
+const Star = function(x, y, radius, color = 'white'){
+  this.x = x;
+  this.y = y;
+  this.radius = radius;
+  this.color = color;
+
+  this.draw = function(){
+    c.beginPath();
+    c.fillStyle = color;
+    c.arc(x, y, radius, 0, 2*Math.PI);
+    c.fill();
+  }
+}
+
+const gameObj = {Player, Enemy, Bullet, Particles, Star};
 export default gameObj;

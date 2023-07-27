@@ -37,8 +37,10 @@ let player;
 let bulletArr = [];
 let enemyArr = [];
 let allParticles = [];
+let starsArr = [];
 
 const init = function (){
+  makeStars();
   player = new gameObj.Player(0, 0, 50, 50, 'white');
   playBtn.addEventListener('click', function(){
     playInit();
@@ -58,11 +60,21 @@ const playInit = function (){
   enemyMake();
 }
 
+const makeStars = function(){
+  for(let i = 0; i < 200; i++){
+    let x = randomNumber(0, innerWidth);
+    let y = randomNumber(0, innerHeight);
+    let radius = randomNumber(1, 2);
+    const star = new gameObj.Star(x, y, radius, 'white');
+    starsArr.push(star);
+  }
+}
+
 const bulletMake = function() {
   document.addEventListener('click', function(){
     const xPos = mousePos.x
-    const bullet1 = new gameObj.Bullet(xPos + 5, 600, 5, 'white', 0, -10);
-    const bullet2 = new gameObj.Bullet(xPos - 5, 600, 5, 'white', 0, -10);
+    const bullet1 = new gameObj.Bullet(xPos + 7, 600, 5, 'white', 0, -10);
+    const bullet2 = new gameObj.Bullet(xPos - 7, 600, 5, 'white', 0, -10);
     bulletArr.push(bullet1);
     bulletArr.push(bullet2);
   });
@@ -175,6 +187,9 @@ const animate = function (){
     requestAnimationFrame(animate);
     c.fillStyle = '#111111';
     c.fillRect(0, 0, innerWidth, innerHeight);
+    for(let i = 0; i < starsArr.length; i++){
+      starsArr[i].draw();
+    }
     bulletAnim();
     enemyAnim();
     collDetect();
@@ -183,6 +198,9 @@ const animate = function (){
   } else {
     c.fillStyle = '#111111';
     c.fillRect(0, 0, innerWidth, innerHeight);
+    for(let i = 0; i < starsArr.length; i++){
+      starsArr[i].draw();
+    }
     gameOverText.style.display = 'block';
   }
 }
