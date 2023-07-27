@@ -4,15 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Space Invaders</title>
-  <style>
-    *{
-      margin: 0;
-      box-sizing: border-box;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="overlay">
+    <button class="playBtn">Play Normal</button>
+    <button class="playBtn hard">Play Hard</button>
+    <p>Score: <span>0</span></p>
+    <h3>Game Over</h3>
+  </div>
   <canvas id="main-canvas"></canvas>
-  <script src="script.js"></script>
+  <script src="script.js" type="module"></script>
+  <script src="objects.js" type="module"></script>
 </body>
 </html>
